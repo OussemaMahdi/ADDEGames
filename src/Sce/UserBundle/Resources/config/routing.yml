@@ -1,0 +1,42 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+sce_user_user:
+    resource: "@UserBundle/Resources/config/routing/user.yml"
+    prefix:   /utilisateur
+
+user_communaute:
+    resource: "@UserBundle/Resources/config/routing/communaute.yml"
+    prefix:   /communaute
+
+user_discipline:
+    resource: "@UserBundle/Resources/config/routing/discipline.yml"
+    prefix:   /discipline
+
+user_image:
+    resource: "@UserBundle/Resources/config/routing/image.yml"
+    prefix:   /image
+
+user_jen:
+    resource: "@UserBundle/Resources/config/routing/jen.yml"
+    prefix:   /jen
+
+user_mission:
+    resource: "@UserBundle/Resources/config/routing/mission.yml"
+    prefix:   /mission
+
+user_cartejen:
+    resource: "@UserBundle/Resources/config/routing/cartejen.yml"
+    prefix:   /cartejen
+
+index:
+    path:     /
+    defaults: { _controller: UserBundle:User:homeuser }
+
+backoffice_homepage:
+    path:     /adminhome
+    defaults: { _controller: UserBundle:User:homeadmin }
+
+user_homepage:
+    path:     /userhome
+    defaults: { _controller: UserBundle:User:homeuser }

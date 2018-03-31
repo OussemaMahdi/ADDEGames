@@ -1,0 +1,24 @@
+cartejen_index:
+    path:     /
+    defaults: { _controller: "UserBundle:CarteJen:index" }
+    methods:  GET
+
+cartejen_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:CarteJen:show" }
+    methods:  GET
+
+cartejen_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:CarteJen:new" }
+    methods:  [GET, POST]
+
+cartejen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:CarteJen:edit" }
+    methods:  [GET, POST]
+
+cartejen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:CarteJen:delete" }
+    methods:  DELETE

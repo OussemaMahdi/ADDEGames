@@ -1,0 +1,24 @@
+mission_index:
+    path:     /
+    defaults: { _controller: "UserBundle:Mission:index" }
+    methods:  GET
+
+mission_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:Mission:show" }
+    methods:  GET
+
+mission_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:Mission:new" }
+    methods:  [GET, POST]
+
+mission_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:Mission:edit" }
+    methods:  [GET, POST]
+
+mission_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:Mission:delete" }
+    methods:  DELETE

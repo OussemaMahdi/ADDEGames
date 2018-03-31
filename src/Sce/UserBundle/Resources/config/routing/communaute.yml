@@ -1,0 +1,24 @@
+communaute_index:
+    path:     /
+    defaults: { _controller: "UserBundle:Communaute:index" }
+    methods:  GET
+
+communaute_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:Communaute:show" }
+    methods:  GET
+
+communaute_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:Communaute:new" }
+    methods:  [GET, POST]
+
+communaute_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:Communaute:edit" }
+    methods:  [GET, POST]
+
+communaute_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:Communaute:delete" }
+    methods:  DELETE

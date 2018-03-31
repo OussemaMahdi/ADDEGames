@@ -1,0 +1,48 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="register-box-body">
+	<p class="login-box-msg">Register a new membership</p>
+	{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+	<div class="form-group has-feedback">
+		{{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+		{{ form_errors(form.username) }}
+		<span class="glyphicon glyphicon-user form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_widget(form.nom, { 'attr': {'class': 'form-control', 'placeholder': 'Nom'|trans } }) }}
+		{{ form_errors(form.nom) }}
+		<span class="glyphicon glyphicon-user form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_widget(form.prenom, { 'attr': {'class': 'form-control', 'placeholder': 'Prenom'|trans } }) }}
+		{{ form_errors(form.prenom) }}
+		<span class="glyphicon glyphicon-user form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email'|trans } }) }}
+		{{ form_errors(form.email) }}
+		<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans } }) }}
+		{{ form_errors(form.plainPassword.first) }}
+		<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'form.password_confirmation'|trans } }) }}
+		{{ form_errors(form.plainPassword.second) }}
+		<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+	</div>
+	<div class="form-group has-feedback">
+		{{ form_rest(form) }}
+	</div>
+	<!-- /.col -->
+	<div class="form-group has-feedback">
+		<button type="submit" class="btn btn-primary">{{ 'registration.submit'|trans }}</button>
+	</div>
+	{{ form_end(form) }}
+	<!-- /.col -->
+	<!-- fos_user_security_login -->
+</div>
+
+		

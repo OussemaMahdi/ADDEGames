@@ -1,0 +1,24 @@
+jen_index:
+    path:     /
+    defaults: { _controller: "UserBundle:Jen:index" }
+    methods:  GET
+
+jen_show:
+    path:     /{id}/show
+    defaults: { _controller: "UserBundle:Jen:show" }
+    methods:  GET
+
+jen_new:
+    path:     /new
+    defaults: { _controller: "UserBundle:Jen:new" }
+    methods:  [GET, POST]
+
+jen_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UserBundle:Jen:edit" }
+    methods:  [GET, POST]
+
+jen_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UserBundle:Jen:delete" }
+    methods:  DELETE

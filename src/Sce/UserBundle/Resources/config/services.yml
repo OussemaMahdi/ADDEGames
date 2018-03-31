@@ -1,0 +1,8 @@
+services:
+    redirect.after.login:
+        class: Sce\UserBundle\Redirection\AfterLoginRedirection
+        arguments: ["@router"]
+
+#    redirect.after.logout:
+#        class: Sce\UserBundle\Redirection\AfterLogoutRedirection
+#        arguments: ["@router", "@security.context"]

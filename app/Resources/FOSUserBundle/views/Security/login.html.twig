@@ -1,0 +1,78 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block stylesheets %}
+	<!-- Select2 -->
+	<link rel="stylesheet" href="{{ asset('assets/plugins/select2/select2.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/plugins/iCheck/all.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/dist/css/skins/_all-skins.min.css') }}">
+{% endblock %}
+
+{% block fos_user_content %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% if error %}
+	<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<!-- /.login-logo -->
+<div class="login-box-body">
+	<p class="login-box-msg">Sign in to start your session</p>
+	<form action="{{ path("fos_user_security_check") }}" method="post">
+		{% if csrf_token %}
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+		{% endif %}
+		<div class="form-group has-feedback">
+			<input type="text" class="form-control" placeholder="Email" id="username" name="_username" value="{{ last_username }}" required="required" />
+			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback">
+			<input type="password" class="form-control" placeholder="Password" id="password" name="_password" required="required" />
+			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<div class="checkbox icheck">
+					<label>
+						<input type="checkbox" class="minimal" id="remember_me" name="_remember_me" value="on" />
+						Se souvenir de moi
+					</label>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<input class="btn btn-primary" type="submit" value="{{ 'security.login.submit'|trans }}" />
+			</div>
+		</div>
+	</form>
+	<div class="form-group has-feedback">
+		<a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
+		<br/>
+		<a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+	</div>
+</div>
+<!-- /.login-box-body -->
+
+{% endblock fos_user_content %}
+
+
+{% block javascript %}
+	<script>
+		$(function () {
+			//iCheck for checkbox and radio inputs
+			$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+				checkboxClass: 'icheckbox_minimal-blue',
+				radioClass: 'iradio_minimal-blue'
+			});
+			//Red color scheme for iCheck
+			$('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+				checkboxClass: 'icheckbox_minimal-red',
+				radioClass: 'iradio_minimal-red'
+			});
+			//Flat red color scheme for iCheck
+			$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+				checkboxClass: 'icheckbox_flat-green',
+				radioClass: 'iradio_flat-green'
+			});
+		});
+	</script>
+{% endblock javascript %}

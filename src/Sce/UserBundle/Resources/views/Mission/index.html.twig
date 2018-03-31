@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Missions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contextescenaristique</th>
+                <th>Descriptif</th>
+                <th>Ludification</th>
+                <th>Authenticite</th>
+                <th>Immersion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mission in missions %}
+            <tr>
+                <td><a href="{{ path('mission_show', { 'id': mission.id }) }}">{{ mission.id }}</a></td>
+                <td>{{ mission.titre }}</td>
+                <td>{{ mission.contexteScenaristique }}</td>
+                <td>{{ mission.descriptif }}</td>
+                <td>{{ mission.ludification }}</td>
+                <td>{{ mission.authenticite }}</td>
+                <td>{{ mission.immersion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('mission_show', { 'id': mission.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mission_edit', { 'id': mission.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mission_new') }}">Create a new mission</a>
+        </li>
+    </ul>
+{% endblock %}

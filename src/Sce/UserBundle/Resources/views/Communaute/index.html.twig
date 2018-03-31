@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block aside %}
+    <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                    </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-dashboard"></i> <span>JEN</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li>
+                <a href="{{ path('jen_new') }}"><i class="fa fa-circle-o"></i> Nouveau Jen</a>
+            </li>
+            <li>
+                <a href="{{ path('jen_index') }}"><i class="fa fa-circle-o"></i> Liste Jen</a>
+            </li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-pie-chart"></i> <span>Discipline</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li>
+                <a href="{{ path('discipline_new') }}"><i class="fa fa-circle-o"></i> Ajouter un discipline</a>
+            </li>
+            <li>
+                <a href="{{ path('discipline_index') }}"><i class="fa fa-circle-o"></i> Liste des disciplines</a>
+            </li>
+            </ul>
+        </li>
+
+        <li class="active treeview">
+            <a href="#">
+            <i class="fa fa-users"></i> <span>Communauté</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li>
+                <a href="{{ path('communaute_new') }}"><i class="fa fa-circle-o"></i> Ajouter un communauté</a>
+            </li>
+            <li class="active">
+                <a href="{{ path('communaute_index') }}"><i class="fa fa-circle-o"></i> Liste des communautés</a>
+            </li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+            <i class="fa fa-money"></i> <span>Carte JEN</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li>
+                <a href="{{ path('cartejen_new') }}"><i class="fa fa-circle-o"></i> Ajouter un carte JEN</a>
+            </li>
+            <li>
+                <a href="{{ path('cartejen_index') }}"><i class="fa fa-circle-o"></i> Liste des cartes Jen</a>
+            </li>
+            </ul>
+        </li>
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+    </aside>
+{% endblock %}
+
+{% block body %}
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Les cartes JEN</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <table id="example1" class="table table-bordered table-striped">
+            <!--<table id="example2" class="table table-bordered table-hover">-->
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Intitule</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for communaute in communautes %}
+                <tr>
+                    <td><a href="{{ path('communaute_show', { 'id': communaute.id }) }}">{{ communaute.id }}</a></td>
+                    <td>{{ communaute.intitule }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('communaute_show', { 'id': communaute.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('communaute_edit', { 'id': communaute.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Intitule</th>
+                <th>Actions</th>
+            </tr>
+            </tfoot>
+            </table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+    <ul>
+        <li>
+            <a href="{{ path('communaute_new') }}">Ajouter un nouveau communaute</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascript %}
+    <!-- DataTables -->
+    <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/public/tables.js') }}"></script>   
+{% endblock %}
+
+{% block stylesheets %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/datatables/dataTables.bootstrap.css') }}">
+{% endblock %}
